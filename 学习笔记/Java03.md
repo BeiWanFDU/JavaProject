@@ -295,3 +295,28 @@ BigDecimal bd1 = new BigDecimal("0.226");    // [48,46, 50, 50, 54]
 BigDecimal bd2 = new BigDecimal("123.226");  // [49, 50, 51, 46, 50, 50, 54]
 BigDecimal bd3 = new BigDecimal("-1.5");     // [45, 49, 46, 53]
 ```
+
+# 正则表达式
+
+作用：检查字符串是否满足规则，在一段文本中查找满足要求的内容
+
+API帮助文档Pattern
+
+![](./imgs/微信截图_20240710222357.png)
+
+```java
+// 如果写成了一个&，那么此时&表示就不是交集了，而是一个简简单单的&符号
+System.out.println("d".matches("[a-z&&[def]]"));
+System.out.println("d".matches("[a-z&[def]]"));
+// \表示转义字符
+System.out.println("2".matches("\\d"));
+
+//必须是数字字母下划线至少6位
+System.out.println("2442ffsf".matches("\\w{6,}"));//true
+System.out.println("244f".matches( "\\w{6,}"));//false
+//必须是数字和字符 必须是4位
+System.out.println("23dF".matches("[a-zA-Z0-9]{4}"));//true
+System.out.println("23_F".matches("[a-zA-Z0-9]{4}"));//false
+System.out.println("23dF".matches("[\\w&&[^_]]{4}"));//true
+System.out.println("23_F".matches("[\\w&&[^_]]{4}"));//false
+```
