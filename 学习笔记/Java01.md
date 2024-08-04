@@ -8,11 +8,15 @@ java类名和文件名需要保持一致
 
 快速生成构造方法command + n / alt +insert / 插件ptg
 
-快速生成option + command + v
+快速生成	       command +  option + v
+
+快速抽取成方法 command + option + m(mac)    control + m(windows)
 
 public static void main简写psvm
 
 for (int i = 0; i < ; i++) {}简写fori
+
+增强for 直接简写for
 
 for (int i = 0; i < strA.length(); i++) {}可以转化为StrA.length().fori
 
@@ -27,8 +31,6 @@ for (int i = 0; i < strA.length(); i++) {}可以转化为StrA.length().fori
 智能提示/修复 option+enter
 
 查看方法源码 command+b
-
-快速抽取成方法 command + option + m(mac)    control + m(windows)
 
 Java中的相对路径从模块名开始   eg：“puzzleGame/image/background.png”
 
@@ -81,25 +83,34 @@ public class demo {
 
 ~~~~~~java
 //第一套体系：
-
 // nextInt()；接收整数
-
 // nextDouble();接收小数
-
 // next();接收字符串
-
 // 遇到空格，制表符，回车就停止接受。这些符号后面的数据就不会接受了
 
 // 第二套体系：
-
 // nextLine();接收字符串
-
 // 可以接收空格，制表符，遇到回车才停止接受数据
-
 // 先用nextInt、nextDouble()、next()会导致下面的nextLine接收不到数据，谨慎放在一起用
 ~~~~~~
 
+### (3)学了parseXxx后的补充: 
 
+```java
+//键盘录入
+Scanner sc = new Scanner(System.in);
+String str = sc.next();
+System.out.println(str);
+//弊端:
+//当我们在使用next，nextInt，nextDouble在接收数据的时候，遇到空格，回车，制表符的时候就停止了
+//键盘录入的是123 123 那么此时只能接收到空格前面的数据, 但我想要的是接收一整行数据
+//约定:以后我们如果想要键盘录入，不管什么类型，统一使用nextLine, 然后使用
+//特点:遇到回车才停止
+String line = sc.nextLine();
+System.out.println(line);
+double v = Double.parseDouble(line);
+System.out.println(v);
+```
 
 
 
@@ -469,6 +480,19 @@ System.out.println(result1);
 boolean result1 = s1.equalsIgnoreCase(s2);//true
 System.out.println(result1);
 ``````
+
+### (3)compareTo方法
+
+根据ASCII码表来比较, 返回值为 -1, 0 ,1
+
+```java
+String s1 =  "abc";
+String s2 = "abd";
+System.out.println(s1 == s2);  //false
+System.out.println(s1.equals(s2));//false
+System.out.println(s1.compareTo(s2));//-1
+System.out.println(s2.compareTo(s1));//-1
+```
 
 ## 5、遍历字符串
 
